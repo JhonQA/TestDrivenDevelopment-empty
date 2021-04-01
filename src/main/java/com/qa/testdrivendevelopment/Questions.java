@@ -28,7 +28,16 @@ public class Questions {
 	 * multChar("Hi-There") → "HHHiii---TTThhheeerrreee"
 	 */
 	public String multiChar(String input) {
-		return "";
+	String newString= "";
+	int len = input.length();
+		
+		for(int i = 0; i< len ;i++) {
+			newString += input.substring(i,i+1)+ input.substring(i,i+1)+ input.substring(i,i+1);
+			
+			
+		}
+		System.out.println(newString);
+		return newString;
 	}
 
 	/**
@@ -45,7 +54,25 @@ public class Questions {
 	 */
 
 	public String sandwichFilling(String sandwich) {
-		return "";
+		
+		String check = sandwich.toLowerCase();
+		int occur = check.split("bread").length;
+		String reverse= "";
+
+			if(occur <2) {
+				reverse = "";
+			}else {
+				int bread = check.indexOf("bread");
+				int breadd = bread +4;
+				int bread1 =check.lastIndexOf("bread");
+				
+				for(int i= bread1 -1 ;i > breadd;i--) {
+					reverse = reverse+ sandwich.charAt(i);
+				}
+
+			}		
+			System.out.println(reverse);
+		return reverse;
 	}
 
 	/**
@@ -61,7 +88,13 @@ public class Questions {
 	 * evenlySpaced(4, 60, 9) → false
 	 */
 	public boolean evenlySpaced(int a, int b, int c) {
-		return false;
+		
+		int small = Math.min(a, Math.min(b, c));
+		int large = Math.max(a,Math.max(b,c));
+		int medium =(a+b+c)- (large + small);
+		
+		
+		return large - medium == medium -small;
 	}
 
 	/**
@@ -76,7 +109,37 @@ public class Questions {
 	 * nMid("Chocolate", 1) → "Choclate"<br>
 	 */
 	public String nMid(String input, int n) {
-    	return "";
+		
+		String words = input;
+		int userInput =n;
+		int middle = input.length()/2+1;
+		int removeFromMid= n/2;
+		String front = "";
+		String back = "";
+		int startingChar=0;
+		int endingChar=0;
+		
+		String newWord = "";
+		
+		if(userInput>1) {
+			startingChar = (middle -1) - removeFromMid;
+			endingChar = (middle+ 1)- removeFromMid;
+			
+			front = words.substring(0,startingChar);
+			back = words.substring((endingChar + 1), input.length());
+			
+			newWord = front +back;
+		}else {
+			front = words.substring(0,(middle-1));
+			back = words.substring(middle , input.length());
+			newWord = front+back;
+		}
+		
+//		String mid = input.substring(3,n);
+		 
+		 
+		 
+    	return newWord;
 	}
 
 	/**
